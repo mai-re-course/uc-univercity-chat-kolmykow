@@ -1,0 +1,52 @@
+@startuml
+Пользователь -> Приложение: Выбранный чат 
+Приложение-->Пользователь: Подсветка выбранного чата 
+Пользователь->Приложение: Удалить чат 
+Приложение->Пользователь: Запрос на подтверждение удаления
+alt Подтверждение удаления чата 
+Пользователь-->Приложение: Подтверждение удаления
+Приложение->БД: Запрос на удаление чата
+БД-->Приложение:Успешное удаление
+else Отказ от удаления чата 
+Пользователь-->Приложение: Отмена удаления
+end
+Приложение-->Пользователь: Список всех чатов
+@enduml
+
+http://www.plantuml.com/plantuml/png/hLDDIiD05DxFATu5SW4NfLSfc5rqOUE-YOY21L44TnRf1SQOiRMroHM-ToE_6LiHcob1N7NcU-_xUM-QuJWVdUNd9vd130tMEiM2lnMibd3-Bib0CDC9bbYpyaPqmxCx4jph3LvOiKGsFB-BNdcYc2v2aWnY7jJobLeBeexe2bPG_PHd-HNDre3LQ5wwTAUTeuObkjHIfuUJ7WhwI96Md4OBOJjpjY5w6Q9Fg5BlT4Gljfu1q5ipodAEshk_pxZHUVlRn9PmXuUEWN_HuRvJ6i-81S9S2xJCSXqUq-t9c3GRfuAdh-V7GkXO_kzAlFP7kDlz9QIdnt_utpwZ9RiWlX9KF3Yzt6LahnbIbf_N9m00
+
+Пользователь->+Приложение: Выбранный чат 
+Приложение->-Пользователь: Подсветка выбранного чата 
+Пользователь->+Приложение: Архивировать чат 
+Приложение->+БД: Запрос на количество заархивированных чатов 
+БД->-Приложение: Количество заархивированных чатов 
+alt Количество заархивированных чатов меньше лимита 
+Приложение->+БД: Запрос на добавление в список заархивированных чатов 
+БД->-Приложение: Подтверждение выполнения 
+else Количество заархивированных чатов больше лимита П
+риложение->Пользователь: Сообщение о превышении лимита 
+end 
+Приложение->-Пользователь: Вывод списка активных чатов
+
+https://www.websequencediagrams.com/?lz=0J_QvtC70YzQt9C-0LLQsNGC0LXQu9GMLT4r0J_RgNC40LvQvtC20LXQvdC40LU6INCS0YvQsdGA0LDQvdC90YvQuSDRh9Cw0YIgCgAdFC0-LQBLGDogAHgFtNGB0LLQtdGC0LrQsCDQsgBTDNC-0LPQvgBaB9CwIAoAfTKQ0YDRhdC40LLQuNGAAIFcCNGMAIEWHyvQkdCUOiDQl9Cw0L_RgNC-0YEg0L3QsCDQutC-0LvQuNGH0LXRgdGC0LLQviDQt9Cw0LAAVxIAghwG0YUAgTkIvtCyIArQkdCUAIIRBQCCSRWaAB9AYWx0AARC0LzQtdC90YzRiNC1INC70LjQvNC4AIJ6CACCAi600L7QsdCw0LLQuwCEPQgg0LIg0YHQv9C40YHQvtC6AIF0TACETAaCAIRNBYDQttC0AGoL0YvQvwCDOQW9AIVJBtGPIAplbHNlAIFtQ7EAhkAGAIIeEtCfCgCGARQAhXkbodC-0L7QsdGJAIIlCr4gAIUABbXQstGL0YgAhwUHuACDCg9lbmQAhk80ktGL0LLQvtC0AIMJCgCHAwWw0LrRggCGMwUAhTMQ&s=napkin
+
+@startuml
+Пользователь -> Приложение: Включение/отключение уведомлений от чатов
+Приложение->БД: Запрос на изменнения
+БД-->Приложение: Изменения успешны
+Приложение-->Пользователь: Текущие настройки уведомлений
+@enduml
+
+http://www.plantuml.com/plantuml/png/TP0nJWCn44NxFSLSmA9FOUKgID011OIUNOg0G20G4dIHEC4gmiJPZPqhlBaH7XOKASgM_dxsVpFJgzdnvUpw_AnYGQRNHrPabhJQ4EmipWiBlI7Ia_aca8Y4YV1ALuWddVzdHsHjzaFHMvO4liXiwF_YjHWhEhScQwmEbJZF2s-bwfsMRRdFMWk9LeYis61S6cXzhWnspe_eVWmlTdmnqvejGUz8-d3OmFcnpKo4Jm9T-UNUq5ynhRKnJzPqn67slSchwUd5ILdv3m00
+
+
+@startuml
+Пользователь -> Приложение: Включение/отключение звук/вибрации от уведомлений
+Приложение->БД: Запрос на изменнения
+БД-->Приложение: Изменения успешны
+Приложение-->Пользователь: Текущие настройки уведомлений
+@enduml
+
+http://www.plantuml.com/plantuml/png/TL5BJeH04DrpYhe0OU-2S1KJtQaBnRrWuYSQZSP4ToIUeASp3D1CmnLUtMXUXvbCCe4LLVK-zOhExlBps_p--Yf2XG6zlgFXry9eYJhq4gU2IX_GeYUouTIphiy4tt1aVEZpOPPWeEnaA7Iq-WYNmB9VqShe4wjM0bq8MNBNDD-YtwkwQ6vddE8BFzpy2uEH-A254392jA4yyFp4riyea6DgvjF_JOeZdqcqm8XQN-3rRJO1xPP-52t_MJcwl4vtUuA5bY4dEZYqIxTcbpSNV8CT
+
+
